@@ -66,15 +66,21 @@ class Auth extends CI_Controller
                     $role_id = $result['role_id'];
                     $out_id = $result['outlet_id'];
 
-                    $userdata = array(
+                    // $userdata = array(
+                    //     'sessionid' => 'pos',
+                    //     'user_id' => $user_id,
+                    //     'user_email' => $user_email,
+                    //     'user_role' => $role_id,
+                    //     'user_outlet' => $out_id,
+                    // );
+
+                    $this->session->set_userdata([
                         'sessionid' => 'pos',
                         'user_id' => $user_id,
                         'user_email' => $user_email,
                         'user_role' => $role_id,
                         'user_outlet' => $out_id,
-                    );
-
-                    $this->session->set_userdata($userdata);
+                    ]);
 
                     redirect(base_url().'/dashboard', 'refresh');
                 } else {
